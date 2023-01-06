@@ -18,9 +18,15 @@ export default createStore({
     save (state, newkoment) {
       newkoment.id = ++state.count
       state.koments.unshift(newkoment)
-    }
+    },
+
   },
   actions: {
+    async save() {
+      const data = await fetch('http://localhost:8080 ')
+      const json = await data.json()
+      this.save = json
+    }
   },
   modules: {
   }

@@ -1,31 +1,19 @@
 <template>
   <div class="home"></div>
-  <ul v-if ="hasKoments">
-    <li v-for="koment in koments" :key="koment.id">
-      ユーザー名→{{ koment.title}}<br>
-      ↓つぶやき↓<br>
-      {{ koment.content}}<br>
-    </li>
-  </ul>
-  <p v-else>つぶやきはありません</p>
+  <div v-on:click="click_count">qqq</div>
+
+
+<!--  <button v-on:click="openMenu =!openMenu">-->
+<!--    <template v-if="openMenu === false">unko</template>-->
+<!--    <template v-else>manko</template>-->
+<!--  </button>-->
+  <div>{{button}}</div>
+
+
 </template>
 
 <style scoped>
-ul {
-  margin: 0;
-  padding: 0;
-}
 
-li {
-  list-style: none;
-  border-bottom: 1px solid #ccc;
-}
-li  {
-  color: #999;
-  text-decoration: none;
-  width: 100%;
-  display: block;
-}
 
 </style>
 
@@ -39,7 +27,34 @@ export default {
     koments () {
       return this.$store.getters.getAll
     }
-  }
+  },
+  data(){
+    return{
+      countunko: 0,
+      title:"unko",
+      isShow: false,
+      openMenu:false,
+      button: "unko",
+    }
+  },
+  methods:{
+    click_count: function(){
+      this.countunko++;
+      console.log(this.countunko)
+      this.button = "manko"
+      },
+    },
+
+
+
+
+  async mounted(){
+    let title = "aaaaaa"
+    this.button = title
+ },
+
+
+
 }
 
 </script>
