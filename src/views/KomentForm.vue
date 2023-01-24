@@ -14,42 +14,34 @@ export default {
   name: 'KomentForm',
   data() {
     return {
-      title: 'sdsd',
-      content: 'rtrt',
+      title: '',
+      content: '',
     }
   },
+  methods: {
+    save() {
+      this.$router.push('/')
+    }
+  }
 }
 
-  methods:
-      async function postdata(url = '"http://localhost:8080/post',data = {title:"a",comtent:"aa"}) {
-      let url = new URL("http://localhost:8080/post")
-      fetch(url, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-          JSON.stringify({title:"aii",content:"ss"}),
-          console.log(aaa)
-      })
+async function postdata(url = 'http://localhost:8080/post',data = {}) {
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}
 
-          this.$store.commit('save')
-          this.$router.push('/')
+postdata('http://localhost:8080/post',{title:"",content:""})
+    .then((data) =>{
+      console.log(data,"wewew")
+    })
 
-          .then((response) => {
-            this.title = response.title
-            return response.json()
-          })
-          .then((response) => {
-            this.content= response.content
-            return response.json()
-          })
-
-          .then((data) => {
-            this.title = data
-          })
-    }
-
-  }
 
 </script>
 
@@ -109,3 +101,12 @@ postData('https://example.com/answer', { answer: 42 })
 .then((data) => {
 console.log(data); // JSON data parsed by `data.json()` call
 });
+
+
+
+
+
+postdata('http://localhost:8080/post',{title:"aa",content:"ss"})
+.then((data) => {
+console.log(data)
+})
