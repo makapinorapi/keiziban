@@ -19,16 +19,26 @@ export default {
     }
   },
   methods: {
-    save() {
+    async save() {
       this.$router.push('/')
+      const response = await fetch('http://localhost:8080/post',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(response)
+      })
+      return response.json()
+
     }
+
   }
 }
 
-async function postdata(url = 'http://localhost:8080/post',data = {}) {
+/*async function postdata(url = 'http://localhost:8080/post',data = {}) {
   const response = await fetch(url, {
     method: 'POST',
-    mode: 'cors',
+   // mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -37,10 +47,10 @@ async function postdata(url = 'http://localhost:8080/post',data = {}) {
   return response.json();
 }
 
-postdata('http://localhost:8080/post',{title:"",content:""})
+postdata('http://localhost:8080/post',{title:"a",content:"aa"})
     .then((data) =>{
       console.log(data,"wewew")
-    })
+    })*/
 
 
 </script>
