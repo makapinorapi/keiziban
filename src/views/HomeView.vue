@@ -1,10 +1,10 @@
 <template>
   <div class="home"></div>
-  <h1>タイトル</h1>
   <!--  {{titles[1].Title}}-->
-  <div v-for=" title in titles" :key="title">{{ title.Title }}<br>
-    <h1>コメント</h1>
-    <br>{{ title.Content }}
+  ---------------------------------------------------------------------------------
+  <div v-for=" title in titles" :key="title">タイトル→{{ title.Title }}<br>
+    <br>コメント→{{ title.Content }}<br>
+  ---------------------------------------------------------------------------------
   </div>
 
 
@@ -13,7 +13,7 @@
   <!--    <template v-if="openMenu === false">unko</template>-->
   <!--    <template v-else>manko</template>-->
   <!--  </button>-->
-  <div>{{ button }}aaaa</div>
+<!--  <div>{{ button }}aaaa</div>
   <input type="text" v-model="message">
   <p v-if="toggle">noranoranora</p>
   <div v-show="isdispley">表示</div>
@@ -23,7 +23,7 @@
   <div v-else>ありません</div>
   <ul>
     <li :v-for="(member, index) in members">{{ members }}:{{ number }}</li>
-  </ul>
+  </ul>-->
 
 
 </template>
@@ -56,16 +56,16 @@ export default {
       },
     }
   },
-  methods: {
+  /*methods: {
     click_count: function () {
-      console.log("ZZZZZZZZZZZZZZZZZZZZZZ")
+      console.log("ZZZZZZZZZZZZZZZZZZZZZZ",this.messge)
       this.countunko++;
       console.log("sssssssss",this.countunko)
       this.button = "manko"
 
     },
   },
-
+*/
 
   async mounted() {
     //let title = "a"
@@ -76,7 +76,7 @@ export default {
     this.titles = json.title
     //this.contents = json.content
     console.log("oooooooooooo", this.titles)
-    console.log("oooooooooooo",)
+    //console.log("oooooooooooo",)
 
 
   },

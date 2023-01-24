@@ -1,7 +1,7 @@
 <template>
   <h2>つぶやこう！</h2>
-  <div>ユーザー名<input type="text" v-model="title"></div>
-  <div class="koment">コメント</div>
+  <div>タイトル<input type="text" v-model="title"></div>
+  <div class="comment">コメント</div>
   <textarea v-model="content"></textarea>
   <div class="center">
     <button @click="save">投稿する</button>
@@ -14,40 +14,43 @@ export default {
   name: 'KomentForm',
   data() {
     return {
-      title: '',
-      content: '',
+      title: 'sdsd',
+      content: 'rtrt',
     }
   },
-  methods: {
-    save() {
-      console.log("aaaaaaaa",JSON.stringify(this.data))
-      let koment = {
-        title: this.title,
-        content: this.content,
-      }
-      this.$store.commit('save', koment)
-      this.$router.push('/')
+}
 
-      this.data = this.title
-      const param = {
+  methods:
+      async function postdata(url = '"http://localhost:8080/post',data = {title:"a",comtent:"aa"}) {
+      let url = new URL("http://localhost:8080/post")
+      fetch(url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(this.data)
+          JSON.stringify({title:"aii",content:"ss"}),
+          console.log(aaa)
+      })
 
-      }
+          this.$store.commit('save')
+          this.$router.push('/')
 
-      fetch('http://localhost:8080/post',param)
-          .then((res)=>{
-            return(res.json())
+          .then((response) => {
+            this.title = response.title
+            return response.json()
           })
-          .then((json)=>{
-            console.log(json,"oioioiooio")
+          .then((response) => {
+            this.content= response.content
+            return response.json()
           })
-    },
+
+          .then((data) => {
+            this.title = data
+          })
+    }
+
   }
-}
+
 </script>
 
 <style scoped>
@@ -74,3 +77,35 @@ button {
 }
 
 </style>
+
+
+/* const response = await fetch ("http://localhost:8080/hello")
+.then (response => response.json())
+console.log(response.title,"aaaaaaaaaaaa")
+this.title = response.title
+this.$store.commit('save', comment)
+this.$router.push('/')
+
+
+async function postData(url = '', data = {}) {
+// Default options are marked with *
+const response = await fetch(url, {
+method: 'POST', // *GET, POST, PUT, DELETE, etc.
+mode: 'cors', // no-cors, *cors, same-origin
+cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+credentials: 'same-origin', // include, *same-origin, omit
+headers: {
+'Content-Type': 'application/json'
+// 'Content-Type': 'application/x-www-form-urlencoded',
+},
+redirect: 'follow', // manual, *follow, error
+referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+body: JSON.stringify(data) // body data type must match "Content-Type" header
+});
+return response.json(); // parses JSON response into native JavaScript objects
+}
+
+postData('https://example.com/answer', { answer: 42 })
+.then((data) => {
+console.log(data); // JSON data parsed by `data.json()` call
+});
