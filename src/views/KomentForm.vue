@@ -20,19 +20,23 @@ export default {
   },
   methods: {
     async save() {
+      console.log("aaaaa")
       this.$router.push('/')
-      const response = await fetch('http://localhost:8080/post',{
+      console.log("bbbbb")
+      let response = await fetch('http://localhost:8080/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(response)
-      })
-      return response.json()
+        body: JSON.stringify({
+          "title": this.title,
+          "content": this.content
+        }),
 
-    }
-
-  }
+      });
+      return response.json();
+    },
+  },
 }
 
 /*async function postdata(url = 'http://localhost:8080/post',data = {}) {
@@ -81,42 +85,3 @@ button {
 </style>
 
 
-/* const response = await fetch ("http://localhost:8080/hello")
-.then (response => response.json())
-console.log(response.title,"aaaaaaaaaaaa")
-this.title = response.title
-this.$store.commit('save', comment)
-this.$router.push('/')
-
-
-async function postData(url = '', data = {}) {
-// Default options are marked with *
-const response = await fetch(url, {
-method: 'POST', // *GET, POST, PUT, DELETE, etc.
-mode: 'cors', // no-cors, *cors, same-origin
-cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-credentials: 'same-origin', // include, *same-origin, omit
-headers: {
-'Content-Type': 'application/json'
-// 'Content-Type': 'application/x-www-form-urlencoded',
-},
-redirect: 'follow', // manual, *follow, error
-referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-body: JSON.stringify(data) // body data type must match "Content-Type" header
-});
-return response.json(); // parses JSON response into native JavaScript objects
-}
-
-postData('https://example.com/answer', { answer: 42 })
-.then((data) => {
-console.log(data); // JSON data parsed by `data.json()` call
-});
-
-
-
-
-
-postdata('http://localhost:8080/post',{title:"aa",content:"ss"})
-.then((data) => {
-console.log(data)
-})
