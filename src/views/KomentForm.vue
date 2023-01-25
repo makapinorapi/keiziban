@@ -20,10 +20,7 @@ export default {
   },
   methods: {
     async save() {
-      console.log("aaaaa")
-      this.$router.push('/')
-      console.log("bbbbb")
-      let response = await fetch('http://localhost:8080/post', {
+      const response = await fetch('http://localhost:8080/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,8 +29,8 @@ export default {
           "title": this.title,
           "content": this.content
         }),
-
       });
+      this.$router.push('/')
       return response.json();
     },
   },
