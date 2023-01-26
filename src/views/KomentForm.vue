@@ -22,6 +22,7 @@ export default {
     async save() {
       const response = await fetch('http://localhost:8080/post', {
         method: 'POST',
+        mode:'cors',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -31,27 +32,19 @@ export default {
         }),
       });
       this.$router.push('/')
-      return response.json();
+      return response.json()
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Success:kkkkkkkkkk', data);
+          })
+          .catch((error) => {
+            console.error('Error:pppppppp', error);
+          });
+
     },
   },
 }
 
-/*async function postdata(url = 'http://localhost:8080/post',data = {}) {
-  const response = await fetch(url, {
-    method: 'POST',
-   // mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data),
-  });
-  return response.json();
-}
-
-postdata('http://localhost:8080/post',{title:"a",content:"aa"})
-    .then((data) =>{
-      console.log(data,"wewew")
-    })*/
 
 
 </script>
@@ -59,15 +52,20 @@ postdata('http://localhost:8080/post',{title:"a",content:"aa"})
 <style scoped>
 div {
   margin-bottom: 10px;
+  color: #42b983;
 }
 
 input[type=text] {
   width: 40%;
+
+
 }
 
 textarea {
   width: 50%;
   height: 30em;
+  color: blue;
+
 }
 
 button {
@@ -77,6 +75,7 @@ button {
 
 .center {
   text-align: center;
+
 }
 
 </style>
