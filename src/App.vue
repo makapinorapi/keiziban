@@ -1,7 +1,21 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/toukou">投稿する</router-link> |
+    <router-link to="/">
+      <v-btn color="#FF99FF">HOME</v-btn>
+    </router-link>
+    <router-link to="/toukou">
+      <v-btn
+          class="mx-2"
+          fab
+          dark
+          large
+          color="cyan"
+      >
+        <v-icon dark>
+          mdi-pencil
+        </v-icon>
+      </v-btn>
+    </router-link>
 
   </nav>
   <router-view/>
