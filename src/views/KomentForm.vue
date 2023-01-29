@@ -9,12 +9,12 @@
           color="white"
       >
         <v-icon>mdi-account</v-icon>
-        <v-toolbar-title class="font-weight-light">
-          User Profile
-        </v-toolbar-title>
+        <v-toolbar-tweet class="font-weight-light">
+          つぶやこう！
+        </v-toolbar-tweet>
         <v-spacer></v-spacer>
         <v-btn
-            color="purple darken-3"
+            color="green"
             fab
             small
             @click="isEditing = !isEditing"
@@ -30,27 +30,25 @@
       <v-card-text>
         <v-text-field
             :disabled="!isEditing"
+            v-model='title'
             color="white"
-            label="Name"
+            label="タイトル"
         ></v-text-field>
-        <v-autocomplete
+        <v-text-field
             :disabled="!isEditing"
-            :items="states"
-            :filter="customFilter"
-            color="white"
-            item-text="name"
-            label="State"
-        ></v-autocomplete>
+            v-model='content'
+            label="コメント"
+        ></v-text-field>
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
             :disabled="!isEditing"
-            color="success"
+            color="#339933"
             @click="save"
         >
-          Save
+          投稿する
         </v-btn>
       </v-card-actions>
       <v-snackbar
@@ -64,18 +62,23 @@
       </v-snackbar>
     </v-card>
 </template>
-
 <script>
 export default {
-  name: 'KomentForm',
-  data() {
+  data () {
     return {
+      hasSaved: false,
+      isEditing: null,
       title: '',
       content: '',
+
     }
   },
+
   methods: {
-    async save() {
+    async save () {
+      //console.log("aaa")
+      this.isEditing = !this.isEditing
+      this.hasSaved = true
       const response = await fetch('http://localhost:8080/post', {
         method: 'POST',
         mode:'cors',
@@ -87,6 +90,8 @@ export default {
           "content": this.content
         }),
       });
+      console.log(this.content,"abbjbj")
+      console.log(this.title,"erere")
       this.$router.push('/')
       return response.json()
           .then((response) => response.json())
@@ -100,9 +105,6 @@ export default {
     },
   },
 }
-
-
-
 </script>
 
 <style scoped>
@@ -132,6 +134,11 @@ button {
 .center {
   text-align: center;
 
+}
+
+.font-weight-light{
+  color: green;
+  font-size: 20px;
 }
 
 </style>

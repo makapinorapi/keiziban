@@ -1,10 +1,10 @@
 <template>
   <div class="home"></div>
   <!--  {{titles[1].Title}}-->
-  ---------------------------------------------------------------------------------
-  <div v-for=" title in titles" :key="title">タイトル→{{ title.Title }}<br>
+
+  <div v-for=" title in titles" :key="title" class="title" >タイトル→{{ title.Title }}<br>
     <br>コメント→{{ title.Content }}<br>
-  ---------------------------------------------------------------------------------
+
   </div>
 
 </template>
@@ -15,6 +15,9 @@
   text-align: center;
 }
 
+.title{
+  border: solid #99CC99;
+}
 </style>
 
 <script>
