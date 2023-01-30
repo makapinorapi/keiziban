@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ToukouView from '../views/ToukouView'
 
+
 const routes = [
   {
     path: '/',

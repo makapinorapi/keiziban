@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/">
-      <v-btn color="#FF99FF">HOME</v-btn>
+      <v-btn color="#F0C8CB">HOME</v-btn>
     </router-link>
     <router-link to="/toukou">
       <v-btn
@@ -9,7 +9,7 @@
           fab
           dark
           large
-          color="cyan"
+          color="#FDD9C0"
       >
         <v-icon dark>
           mdi-pencil

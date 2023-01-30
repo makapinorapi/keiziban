@@ -1,4 +1,5 @@
 <template>
+  <body>
   <div class="home"></div>
   <!--  {{titles[1].Title}}-->
 
@@ -6,6 +7,7 @@
     <br>コメント→{{ title.Content }}<br>
 
   </div>
+  </body>
 
 </template>
 
@@ -13,6 +15,9 @@
 .home {
   color: #42b983;
   text-align: center;
+}
+body {
+
 }
 
 .title{
@@ -25,21 +30,10 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      titles: "unko",
+      titles: "aaa",
       contents: "vvvv",
-      button: "unko",
     }
   },
-  /*methods: {
-    click_count: function () {
-      console.log("ZZZZZZZZZZZZZZZZZZZZZZ",this.messge)
-      this.countunko++;
-      console.log("sssssssss",this.countunko)
-      this.button = "manko"
-
-    },
-  },
-*/
 
   async mounted() {
     //let title = "a"
