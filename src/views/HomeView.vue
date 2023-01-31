@@ -16,12 +16,10 @@
   color: #42b983;
   text-align: center;
 }
-body {
 
-}
 
 .title{
-  border: solid #99CC99;
+  border: 1px solid rgba(0,0,0,0.3);
 }
 </style>
 

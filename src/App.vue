@@ -1,4 +1,5 @@
 <template>
+  <body>
   <nav>
     <router-link to="/">
       <v-btn color="#F0C8CB">HOME</v-btn>
@@ -18,6 +19,7 @@
     </router-link>
 
   </nav>
+  </body>
   <router-view/>
 </template>
 
@@ -41,5 +43,13 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+body{
+  background-image:url(assets/flower_s.jpg) ;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+
 }
 </style>
