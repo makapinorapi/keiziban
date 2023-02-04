@@ -3,21 +3,21 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     count: 0,
-    koments: []
+    comments: []
   },
   getters: {
     getCount:(state) => {
-      return state.koments.length
+      return state.comments.length
     },
     getAll:(state) => {
-      return state.koments
+      return state.comments
     }
   },
   mutations: {
     //コメントを保存する
-    save (state, newkoment) {
-      newkoment.id = ++state.count
-      state.koments.unshift(newkoment)
+    save (state, newcomment) {
+      newcomment.id = ++state.count
+      state.comments.unshift(newcomment)
     },
 
   },

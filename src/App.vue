@@ -4,7 +4,7 @@
     <router-link to="/">
       <v-btn color="#F0C8CB">HOME</v-btn>
     </router-link>
-    <router-link to="/toukou">
+    <router-link to="/post">
       <v-btn
           class="mx-2"
           fab

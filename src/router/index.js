@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ToukouView from '../views/ToukouView'
+import PostView from '../views/PostView'
 
 
 const routes = [
@@ -10,9 +10,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/toukou',
-    name: 'toukou',
-    component: ToukouView
+    path: '/post',
+    name: 'post',
+    component: PostView
   },
 
 
