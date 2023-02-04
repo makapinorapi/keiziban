@@ -30,9 +30,9 @@
     <v-card-text>
       <v-text-field
           :disabled="!isEditing"
-          v-model='title'
+          v-model='user'
           color="white"
-          label="タイトル"
+          label="ユーザー名"
       ></v-text-field>
       <v-text-field
           :disabled="!isEditing"
@@ -68,7 +68,7 @@ export default {
     return {
       hasSaved: false,
       isEditing: null,
-      title: '',
+      user: '',
       content: '',
     }
   },
@@ -84,12 +84,10 @@ export default {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "title": this.title,
+          "user": this.user,
           "content": this.content
         }),
       });
-      console.log(this.content, "abbjbj")
-      console.log(this.title, "erere")
       this.$router.push('/')
       return response.json()
           .then((response) => response.json())

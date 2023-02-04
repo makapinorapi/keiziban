@@ -15,11 +15,8 @@
                 width="100px"
             ></v-img>
           </v-avatar>
-          <div class="comment-avator-name">makiko </div>
+          <div class="comment-avator-name" > {{ comment.User }}</div>
         </v-list-item-avatar>
-        <div>
-          <span class="comment-title">{{ comment.Title }}</span>
-        </div>
         <div>
           <v-card-text class="comment-text">
             {{ comment.Content }}
@@ -58,10 +55,6 @@
   float: left
 }
 
-.comment-title {
-  color: dimgrey;
-}
-
 .comment-text {
   font-size: 20px;
   color: dimgrey;
@@ -84,6 +77,8 @@ export default {
   data() {
     return {
       comments: {},
+      users:{},
+
     }
   },
   methods: {
